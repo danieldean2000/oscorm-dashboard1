@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Premium Blue Color Scheme - Luxury & Sophisticated */
+  --background: oklch(0.995 0.003 240);
+  --foreground: oklch(0.12 0.015 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0.015 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.015 240);
+  /* Primary: Premium Deep Blue (#1e40af / #1e3a8a) - Rich & Luxurious */
+  --primary: oklch(0.42 0.15 245);
+  --primary-foreground: oklch(0.99 0.003 240);
+  /* Secondary: Premium Light Blue */
+  --secondary: oklch(0.97 0.008 240);
+  --secondary-foreground: oklch(0.22 0.015 240);
+  /* Muted: Soft Premium Blue Gray */
+  --muted: oklch(0.97 0.005 240);
+  --muted-foreground: oklch(0.48 0.012 240);
+  /* Accent: Premium Royal Blue (#1d4ed8 / #2563eb) */
+  --accent: oklch(0.50 0.18 245);
+  --accent-foreground: oklch(0.99 0.003 240);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.93 0.008 240);
+  --input: oklch(0.93 0.008 240);
+  --ring: oklch(0.42 0.15 245);
+  /* Chart Colors: Premium Blue Palette */
+  --chart-1: oklch(0.42 0.15 245); /* Premium Deep Blue */
+  --chart-2: oklch(0.50 0.18 245); /* Royal Blue */
+  --chart-3: oklch(0.58 0.16 230); /* Ocean Blue */
+  --chart-4: oklch(0.65 0.14 220); /* Sky Blue */
+  --chart-5: oklch(0.72 0.12 210); /* Light Premium Blue */
+  /* Sidebar: Premium Blue Theme */
+  --sidebar: oklch(0.99 0.003 240);
+  --sidebar-foreground: oklch(0.18 0.015 240);
+  --sidebar-primary: oklch(0.42 0.15 245);
+  --sidebar-primary-foreground: oklch(0.99 0.003 240);
+  --sidebar-accent: oklch(0.96 0.008 240);
+  --sidebar-accent-foreground: oklch(0.22 0.015 240);
+  --sidebar-border: oklch(0.93 0.008 240);
+  --sidebar-ring: oklch(0.42 0.15 245);
+}
+
+.dark {
+  /* Premium Blue Dark Mode - Luxurious Dark Theme */
+  --background: oklch(0.10 0.012 240);
+  --foreground: oklch(0.96 0.003 240);
+  --card: oklch(0.16 0.015 240);
+  --card-foreground: oklch(0.96 0.003 240);
+  --popover: oklch(0.16 0.015 240);
+  --popover-foreground: oklch(0.96 0.003 240);
+  /* Primary: Premium Bright Blue for Dark Mode */
+  --primary: oklch(0.65 0.20 245);
+  --primary-foreground: oklch(0.10 0.012 240);
+  /* Secondary: Dark Premium Blue Gray */
+  --secondary: oklch(0.22 0.015 240);
+  --secondary-foreground: oklch(0.96 0.003 240);
+  /* Muted: Dark Premium Blue Gray */
+  --muted: oklch(0.22 0.015 240);
+  --muted-foreground: oklch(0.65 0.012 240);
+  /* Accent: Premium Royal Blue for Dark Mode */
+  --accent: oklch(0.70 0.22 245);
+  --accent-foreground: oklch(0.10 0.012 240);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.22 0.015 240);
+  --input: oklch(0.22 0.015 240);
+  --ring: oklch(0.65 0.20 245);
+  /* Chart Colors: Premium Blue Dark Theme */
+  --chart-1: oklch(0.65 0.20 245); /* Premium Bright Blue */
+  --chart-2: oklch(0.70 0.22 245); /* Royal Blue */
+  --chart-3: oklch(0.75 0.18 230); /* Ocean Blue */
+  --chart-4: oklch(0.80 0.16 220); /* Sky Blue */
+  --chart-5: oklch(0.85 0.14 210); /* Light Premium Blue */
+  /* Sidebar: Premium Blue Dark Theme */
+  --sidebar: oklch(0.13 0.015 240);
+  --sidebar-foreground: oklch(0.96 0.003 240);
+  --sidebar-primary: oklch(0.65 0.20 245);
+  --sidebar-primary-foreground: oklch(0.10 0.012 240);
+  --sidebar-accent: oklch(0.22 0.015 240);
+  --sidebar-accent-foreground: oklch(0.96 0.003 240);
+  --sidebar-border: oklch(0.22 0.015 240);
+  --sidebar-ring: oklch(0.65 0.20 245);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    /* Better touch targets for mobile */
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Prevent text size adjustment on iOS */
+    input, textarea, select {
+      font-size: 16px;
+    }
+    
+    /* Better scrolling on mobile */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+/* Premium Blue Brand Colors & Utilities */
+@layer utilities {
+  /* Premium Blue Gradient Backgrounds */
+  .oscorm-gradient-primary {
+    background: linear-gradient(135deg, oklch(0.42 0.15 245) 0%, oklch(0.50 0.18 245) 100%);
+  }
+  
+  .oscorm-gradient-secondary {
+    background: linear-gradient(135deg, oklch(0.50 0.18 245) 0%, oklch(0.58 0.16 230) 100%);
+  }
+  
+  .oscorm-gradient-accent {
+    background: linear-gradient(135deg, oklch(0.58 0.16 230) 0%, oklch(0.65 0.14 220) 100%);
+  }
+  
+  .oscorm-gradient-premium {
+    background: linear-gradient(135deg, oklch(0.38 0.16 245) 0%, oklch(0.50 0.18 245) 50%, oklch(0.58 0.16 230) 100%);
+  }
+  
+  /* Premium Blue Text Colors */
+  .text-oscorm-primary {
+    color: oklch(0.42 0.15 245);
+  }
+  
+  .text-oscorm-accent {
+    color: oklch(0.50 0.18 245);
+  }
+  
+  .text-oscorm-premium {
+    color: oklch(0.38 0.16 245);
+  }
+  
+  /* Premium Blue Border Colors */
+  .border-oscorm-primary {
+    border-color: oklch(0.42 0.15 245);
+  }
+  
+  .border-oscorm-accent {
+    border-color: oklch(0.50 0.18 245);
+  }
+  
+  .border-oscorm-premium {
+    border-color: oklch(0.38 0.16 245);
+  }
+  
+  /* Premium Blue Background Colors */
+  .bg-oscorm-primary {
+    background-color: oklch(0.42 0.15 245);
+  }
+  
+  .bg-oscorm-accent {
+    background-color: oklch(0.50 0.18 245);
+  }
+  
+  .bg-oscorm-premium {
+    background-color: oklch(0.38 0.16 245);
+  }
+  
+  .bg-oscorm-primary-light {
+    background-color: oklch(0.97 0.008 240);
+  }
+  
+  .bg-oscorm-accent-light {
+    background-color: oklch(0.98 0.01 245);
+  }
+  
+  .bg-oscorm-premium-light {
+    background-color: oklch(0.96 0.008 240);
+  }
+}
