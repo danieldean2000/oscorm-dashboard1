@@ -16,6 +16,7 @@ import {
   Settings,
   BarChart3,
   Tag,
+  MessageSquare,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/auth-context";
@@ -26,6 +27,7 @@ const adminMenuItems = [
   { icon: FileText, label: "Posts", href: "/posts", roles: ["admin", "blog_user"] },
   { icon: PlusCircle, label: "New Post", href: "/posts/new", roles: ["admin", "blog_user"] },
   { icon: Tag, label: "Categories", href: "/categories", roles: ["admin"] },
+  { icon: MessageSquare, label: "Comments", href: "/comments", roles: ["admin"] },
   { icon: Users, label: "Users", href: "/users", roles: ["admin"] },
  
 ];

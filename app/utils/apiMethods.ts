@@ -114,3 +114,22 @@ export const putFormData = async (url: string, formData: FormData) => {
     throw error;
   }
 };
+
+export const patch = async (url: string, data: RequestData) => {
+  try {
+    const response = await fetch("/api/proxy", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        url,        // backend URL
+        method: "PATCH",
+        body: data, // PATCH data
+      }),
+    });
+
+    return await response.json();
+  } catch (error: any) {
+    console.error("PATCH API error:", error);
+    throw error;
+  }
+};
