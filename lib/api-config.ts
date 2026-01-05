@@ -33,5 +33,8 @@ export const API_ENDPOINTS = {
     BASE: getApiUrl('api/blog-comments'),
     APPROVE: (id: string | number) => getApiUrl(`api/blog-comments/${id}/approve`),
   },
+  NEWSLETTER: {
+    BASE: getApiUrl('api/newsletter'),
+  },
 } as const;
 
