@@ -20,6 +20,8 @@ import {
   Calendar,
   Mail,
   User,
+  Star,
+  Link as LinkIcon,
 } from "lucide-react";
 import { API_ENDPOINTS } from "@/lib/api-config";
 import { get, patch, del } from "@/app/utils/apiMethods";
@@ -33,6 +35,8 @@ interface Comment {
   name: string;
   email: string;
   content: string;
+  review?: number | null;
+  url?: string | null;
   is_approved: boolean;
   created_at: string;
   updated_at?: string;
@@ -79,6 +83,8 @@ export default function CommentsPage() {
     name: apiComment.name,
     email: apiComment.email,
     content: apiComment.content,
+    review: apiComment.review !== undefined && apiComment.review !== null ? parseInt(apiComment.review) : null,
+    url: apiComment.url || null,
     is_approved: apiComment.is_approved === true || apiComment.is_approved === 1,
     created_at: apiComment.created_at,
     updated_at: apiComment.updated_at,
@@ -362,6 +368,12 @@ export default function CommentsPage() {
                                   >
                                     {comment.is_approved ? "Approved" : "Pending"}
                                   </Badge>
+                                  {comment.review && (
+                                    <Badge variant="outline" className="text-xs shrink-0 flex items-center gap-1">
+                                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                                      {comment.review}/5
+                                    </Badge>
+                                  )}
                                 </div>
                                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                                   <Badge variant="outline" className="text-xs w-fit">
@@ -384,6 +396,29 @@ export default function CommentsPage() {
                                   <span className="flex items-center gap-1.5">
                                     <Calendar className="h-3 w-3 shrink-0" />
                                     {new Date(comment.created_at).toLocaleDateString()}
+                                  </span>
+                                )}
+                                {comment.review && (
+                                  <span className="flex items-center gap-1.5">
+                                    <Star className="h-3 w-3 shrink-0 fill-yellow-400 text-yellow-400" />
+                                    <span className="font-medium text-foreground">
+                                      Rating: {comment.review}/5
+                                    </span>
+                                  </span>
+                                )}
+                                {comment.url && (
+                                  <span className="flex items-center gap-1.5">
+                                    <LinkIcon className="h-3 w-3 shrink-0" />
+                                    <span className="text-muted-foreground">Website:</span>
+                                    <a
+                                      href={comment.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-blue-600 hover:underline truncate max-w-[250px] sm:max-w-[400px]"
+                                      title={comment.url}
+                                    >
+                                      {comment.url}
+                                    </a>
                                   </span>
                                 )}
                               </div>
