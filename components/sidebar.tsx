@@ -17,6 +17,11 @@ import {
   BarChart3,
   Tag,
   MessageSquare,
+  Home,
+  Briefcase,
+  UserPlus,
+  Globe,
+  HelpCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/auth-context";
@@ -29,7 +34,11 @@ const adminMenuItems = [
   { icon: Tag, label: "Categories", href: "/categories", roles: ["admin"] },
   { icon: MessageSquare, label: "Comments", href: "/comments", roles: ["admin"] },
   { icon: Users, label: "Users", href: "/users", roles: ["admin"] },
- 
+  { icon: Globe, label: "Website Manage", href: "/website-manage", roles: ["admin"] },
+  { icon: Home, label: "Home Page", href: "/website-manage/home", roles: ["admin"] },
+  { icon: Briefcase, label: "Service Page", href: "/website-manage/service", roles: ["admin"] },
+  { icon: UserPlus, label: "Hire Us Page", href: "/website-manage/hire-us", roles: ["admin"] },
+  { icon: HelpCircle, label: "FAQ Page", href: "/website-manage/faq", roles: ["admin"] },
 ];
 
 export function Sidebar() {
@@ -122,7 +131,7 @@ export function Sidebar() {
           <nav className="flex-1 space-y-1">
             {menuItems.map((item, index) => {
               const Icon = item.icon;
-              const isActive = pathname === item.href;
+              const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
 
               return (
                 <motion.div
@@ -139,7 +148,8 @@ export function Sidebar() {
                       variant={isActive ? "secondary" : "ghost"}
                       className={cn(
                         "w-full justify-start gap-3 text-sm lg:text-base",
-                        isActive && "bg-secondary"
+                        isActive && "bg-secondary",
+                        item.href.startsWith("/website-manage") && item.href !== "/website-manage" && "ml-4"
                       )}
                     >
                       <Icon className="h-4 w-4 shrink-0" />
