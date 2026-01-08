@@ -12,31 +12,46 @@ import {
   UserPlus, 
   Globe,
   ArrowRight,
-  HelpCircle
+  HelpCircle,
+  Layers
 } from "lucide-react";
 
 export default function WebsiteManagePage() {
   const pages = [
     {
       title: "Home Page",
-      description: "Manage hero section, slides, and service cards for your home page",
+      description: "Manage hero section, slides, service cards, and testimonials for your home page",
       href: "/website-manage/home",
       icon: Home,
       color: "text-blue-500",
+    },
+    {
+      title: "Services Management",
+      description: "Manage services with hierarchical categories (Services → Main Categories → Categories → Sub Categories)",
+      href: "/website-manage/services",
+      icon: Layers,
+      color: "text-purple-500",
+    },
+    {
+      title: "Hire Expert Management",
+      description: "Manage hire expert categories with hierarchical structure (Experts → Main Categories → Categories → Sub Categories)",
+      href: "/website-manage/hire-expert",
+      icon: UserPlus,
+      color: "text-green-500",
     },
     {
       title: "Service Page",
       description: "Manage service section header and service cards with detailed information",
       href: "/website-manage/service",
       icon: Briefcase,
-      color: "text-purple-500",
+      color: "text-indigo-500",
     },
     {
       title: "Hire Us Page",
       description: "Manage contact information, form fields, and why choose us section",
       href: "/website-manage/hire-us",
       icon: UserPlus,
-      color: "text-green-500",
+      color: "text-teal-500",
     },
     {
       title: "FAQ Page",
