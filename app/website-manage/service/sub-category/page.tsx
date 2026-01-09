@@ -3,15 +3,12 @@
 import { motion } from "framer-motion";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { ProtectedRoute } from "@/components/protected-route";
-import { Briefcase } from "lucide-react";
-import { HeroSection } from "@/components/Services/Service/HeroSection";
-import { ServiceCards } from "@/components/Services/Service/ServiceCards";
+import { FolderTree } from "lucide-react";
 
-export default function ServicePage() {
+export default function SubCategoryPage() {
   return (
     <ProtectedRoute>
       <DashboardLayout>
-      
         <div className="space-y-6">
           {/* Header */}
           <motion.div
@@ -20,11 +17,11 @@ export default function ServicePage() {
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-3">
-              <Briefcase className="h-8 w-8 text-primary" />
+              <FolderTree className="h-8 w-8 text-primary" />
               <div>
-                <h1 className="text-3xl font-bold tracking-tight">Service Page Management</h1>
+                <h1 className="text-3xl font-bold tracking-tight">Sub Category Management</h1>
                 <p className="text-muted-foreground mt-1">
-                  Manage service page settings and configurations
+                  Manage service sub categories
                 </p>
               </div>
             </div>
@@ -36,13 +33,11 @@ export default function ServicePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
           >
-            {/* <div className="p-6 border rounded-lg bg-card">
-              <p className="text-muted-foreground">Service page management content will be added here.</p>
-            </div> */}
+            <div className="p-6 border rounded-lg bg-card">
+              <p className="text-muted-foreground">Sub Category management content will be added here.</p>
+            </div>
           </motion.div>
         </div>
-        <HeroSection />
-        <ServiceCards />
       </DashboardLayout>
     </ProtectedRoute>
   );

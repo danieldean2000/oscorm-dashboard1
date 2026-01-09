@@ -15,7 +15,6 @@ import {
   Trash2, 
   Edit, 
   Save,
-  FileText,
   Tag,
   X,
   Loader2,
@@ -45,27 +44,12 @@ interface ApiFaq {
   isDeleted: boolean;
 }
 
-interface FAQSection {
-  id: string;
-  title: string;
-  description: string;
-  isActive: boolean;
-}
-
 interface FAQType {
   id?: number;
   name: string;
 }
 
 export default function FAQManagePage() {
-  // FAQ Section Header
-  const [faqSection, setFaqSection] = useState<FAQSection>({
-    id: "1",
-    title: "Frequently Asked Questions",
-    description: "Find answers to common questions about our services, processes, and policies.",
-    isActive: true,
-  });
-
   // FAQs State - loaded from API
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   
@@ -74,7 +58,6 @@ export default function FAQManagePage() {
   const [newTypeName, setNewTypeName] = useState<string>("");
   const [loadingTypes, setLoadingTypes] = useState<boolean>(false);
 
-  const [editingSection, setEditingSection] = useState(false);
   const [editingFaq, setEditingFaq] = useState<string | null>(null);
   const [selectedTypeFilter, setSelectedTypeFilter] = useState<string>("all");
   const [selectedStatusFilter, setSelectedStatusFilter] = useState<string>("all"); // all, active, inactive
@@ -248,11 +231,6 @@ export default function FAQManagePage() {
     loadFaqs();
     loadTypes();
   }, []);
-
-  const handleSectionSave = () => {
-    setEditingSection(false);
-    console.log("FAQ section saved:", faqSection);
-  };
 
   const handleFaqSave = async (faqId: string) => {
     const faq = faqs.find((f) => f.id === faqId);
@@ -468,61 +446,6 @@ export default function FAQManagePage() {
               </Button>
             </motion.div>
           )}
-
-          {/* FAQ Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-          >
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-primary" />
-                    <CardTitle>FAQ Section Header</CardTitle>
-                  </div>
-                  {!editingSection ? (
-                    <Button onClick={() => setEditingSection(true)} variant="outline" size="sm">
-                      <Edit className="h-4 w-4 mr-2" />
-                      Edit
-                    </Button>
-                  ) : (
-                    <Button onClick={handleSectionSave} size="sm">
-                      <Save className="h-4 w-4 mr-2" />
-                      Save
-                    </Button>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent>
-                {editingSection ? (
-                  <div className="space-y-4">
-                    <div>
-                      <Label>Title</Label>
-                      <Input
-                        value={faqSection.title}
-                        onChange={(e) => setFaqSection({ ...faqSection, title: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <Label>Description</Label>
-                      <textarea
-                        className="w-full min-h-[100px] px-3 py-2 border rounded-md"
-                        value={faqSection.description}
-                        onChange={(e) => setFaqSection({ ...faqSection, description: e.target.value })}
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <h3 className="text-2xl font-bold">{faqSection.title}</h3>
-                    <p className="text-muted-foreground mt-2">{faqSection.description}</p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </motion.div>
 
           {/* Types Management */}
           <motion.div
