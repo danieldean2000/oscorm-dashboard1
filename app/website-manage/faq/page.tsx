@@ -691,9 +691,15 @@ export default function FAQManagePage() {
                                 disabled={savingFaqId === faq.id}
                               >
                                 {savingFaqId === faq.id ? (
-                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                  <>
+                                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                                    Saving...
+                                  </>
                                 ) : (
-                                  <Save className="h-4 w-4" />
+                                  <>
+                                    <Save className="h-4 w-4 mr-2" />
+                                    Save
+                                  </>
                                 )}
                               </Button>
                               <Button 
@@ -706,7 +712,8 @@ export default function FAQManagePage() {
                                 variant="ghost"
                                 disabled={savingFaqId === faq.id}
                               >
-                                <X className="h-4 w-4" />
+                                <X className="h-4 w-4 mr-2" />
+                                Cancel
                               </Button>
                             </>
                           ) : (
@@ -717,7 +724,8 @@ export default function FAQManagePage() {
                                 variant="outline"
                                 disabled={deletingFaqId === faq.id}
                               >
-                                <Edit className="h-4 w-4" />
+                                <Edit className="h-4 w-4 mr-2" />
+                                Edit
                               </Button>
                               <Button
                                 onClick={() => handleDeleteFaq(faq.id)}
@@ -726,9 +734,15 @@ export default function FAQManagePage() {
                                 disabled={deletingFaqId === faq.id}
                               >
                                 {deletingFaqId === faq.id ? (
-                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                  <>
+                                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                                    Deleting...
+                                  </>
                                 ) : (
-                                  <Trash2 className="h-4 w-4" />
+                                  <>
+                                    <Trash2 className="h-4 w-4 mr-2" />
+                                    Delete
+                                  </>
                                 )}
                               </Button>
                             </>
